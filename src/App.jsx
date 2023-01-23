@@ -27,22 +27,19 @@ function App() {
     }, interval)
   };
 
+  const handleToggleIncrementing = () => {
+    setIncrementing(!incrementing)
+  }
+
   return (
     <div className="App">
-      <div className='card'>
-        <p ref={elem => refs.current[0] = elem} data={0}>0</p>
-      </div>
-      <div className='card'>
-        <p ref={elem => refs.current[1] = elem} data={0}>0</p>
-      </div>
-      <div className='card'>
-        <p ref={elem => refs.current[2] = elem} data={0}>0</p>
-      </div>
-      <div className='card'>
-        <p ref={elem => refs.current[3] = elem} data={0}>0</p>
-      </div>
+      {numbers.map((num, idx) => (
+        <div className='card'>
+          <p ref={elem => refs.current[idx] = elem} data={0}>0</p>
+        </div>
+      ))}
 
-      <div className='btn' ><button onClick={e => setIncrementing(true)}>set</button></div>
+      <div className='btn' ><button onClick={handleToggleIncrementing}>set</button></div>
     </div>
   )
 }
